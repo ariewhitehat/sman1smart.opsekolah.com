@@ -52,12 +52,12 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
 <!-- Begin of Content -->
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Delete Record</h1>
+        <h1 class="h2">Delete Data PD</h1>
     </div>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="alert alert-danger">
             <input type="hidden" name="id" value="<?php echo trim($_GET["id"]); ?>" />
-            <p>Are you sure you want to delete this employee record?</p>
+            <p>Anda yakin ingin menghapus catatan Data PD ini?</p>
             <p>
                 <input type="submit" value="Yes" class="btn btn-danger">
                 <a href="index.php" class="btn btn-secondary ml-2">No</a>

@@ -12,8 +12,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 <?php include "../template/header.php"; ?>
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Employees Details</h1>
-        <a href="create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add New Employee</a>
+        <h1 class="h2">Data Kelulusan</h1>
+        <a href="create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambahkan Data PD</a>
     </div>
     <?php
     // Include config file

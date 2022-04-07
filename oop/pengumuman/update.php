@@ -134,9 +134,9 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
 <!-- Begin of Content -->
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Update Record</h1>
+        <h1 class="h2">Update Data PD</h1>
     </div>
-    <p>Please edit the input values and submit to update the employee record.</p>
+    <p>Mohon edit data isi dan kirim keupdate Data PD</p>
     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
         <div class="form-group mb-3">
             <label>Name</label>
