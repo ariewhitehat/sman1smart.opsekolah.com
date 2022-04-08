@@ -85,23 +85,84 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h1 class="h2">Buat Data PD</h1>
     </div>
     <p>Please fill this form and submit to add employee record to the database.</p>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <div class="form-group mb-2">
-            <label>Name</label>
+    <form class="row g-3" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <div class="col-md-4 mb-2">
+            <label>Username</label>
             <input type="text" name="name" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $name; ?>">
             <span class="invalid-feedback"><?php echo $name_err; ?></span>
         </div>
-        <div class="form-group mb-2">
-            <label>Address</label>
-            <textarea name="address" class="form-control <?php echo (!empty($address_err)) ? 'is-invalid' : ''; ?>"><?php echo $address; ?></textarea>
-            <span class="invalid-feedback"><?php echo $address_err; ?></span>
+        <div class="col-md-4 mb-2">
+            <label>Password</label>
+            <input type="text" name="name" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $name; ?>">
+            <span class="invalid-feedback"><?php echo $name_err; ?></span>
         </div>
-        <div class="form-group mb-2">
-            <label>Salary</label>
-            <input type="text" name="salary" class="form-control <?php echo (!empty($salary_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $salary; ?>">
-            <span class="invalid-feedback"><?php echo $salary_err; ?></span>
+        <div class="col-md-4 mb-2">
+            <label>Nomor Induk Siswa</label>
+            <input type="text" name="name" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $name; ?>">
+            <span class="invalid-feedback"><?php echo $name_err; ?></span>
         </div>
-        <div class="mt-3">
+
+        <div class="col-md-4 mb-2">
+            <label>Tempat Tanggal Lahir</label>
+            <input type="date" name="name" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $name; ?>">
+            <span class="invalid-feedback"><?php echo $name_err; ?></span>
+        </div>
+
+        <div class="col-md-4 mb-2">
+            <label for="inputState" class="form-label">Jenis Kelamin</label>
+            <select id="inputState" class="form-select">
+                <option selected>Pilih...</option>
+                <option>Laki-laki</option>
+                <option>Perempuan</option>
+            </select>
+        </div>
+
+        <div class="col-md-4 mb-2">
+            <label>Nama Orang Tua / Wali</label>
+            <input type="text" name="name" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $name; ?>">
+            <span class="invalid-feedback"><?php echo $name_err; ?></span>
+        </div>
+
+        <div class="col-md-4 mb-2">
+            <label for="inputState" class="form-label">Kelas</label>
+            <select id="inputState" class="form-select">
+                <option selected>Pilih...</option>
+                <option>X</option>
+                <option>XI</option>
+                <option>XII</option>
+            </select>
+        </div>
+        <div class="col-md-4 mb-2">
+            <label for="inputState" class="form-label">Program Studi</label>
+            <select id="inputState" class="form-select">
+                <option selected>Pilih...</option>
+                <option>MIPA</option>
+                <option>IIS</option>
+            </select>
+        </div>
+
+        <div class="col-md-4 mb-2">
+            <label>Nilai Rata-rata</label>
+            <input type="text" name="name" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $name; ?>">
+            <span class="invalid-feedback"><?php echo $name_err; ?></span>
+        </div>
+
+        <div class="col-md-4 mb-2">
+            <label>Keterangan</label>
+            <input type="text" name="name" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $name; ?>">
+            <span class="invalid-feedback"><?php echo $name_err; ?></span>
+        </div>
+        <div class="col-md-4 mb-2">
+            <label>Foto</label>
+            <input type="text" name="name" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $name; ?>">
+            <span class="invalid-feedback"><?php echo $name_err; ?></span>
+        </div>
+        <div class="col-md-4 mb-2">
+            <label>URL Surat Keterangan Kelulusan</label>
+            <input type="text" name="name" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $name; ?>">
+            <span class="invalid-feedback"><?php echo $name_err; ?></span>
+        </div>
+        <div class="mt-3 mb-5">
             <input type="submit" class="btn btn-primary" value="Submit">
             <a href="index.php" class="btn btn-secondary">Cancel</a>
         </div>

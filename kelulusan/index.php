@@ -138,65 +138,54 @@ if (!isset($_SESSION['is_login'])) {
                   <tr>
                     <td colspan="3" class="h5">Daftar Nilai Kelompok Umum</td>
                   </tr>
-                  <tr>
-                    <th scope="col">Matematika</th>
-                    <th scope="col">B. Indonesia</th>
-                    <th scope="col">B. Inggris</th>
-                  </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>78.00</td>
-                    <td>80.00</td>
-                    <td>85.70</td>
+                    <td>Matematika</td>
+                    <td>:</td>
+                    <td><?php echo $_SESSION['matematika']; ?></td>
                   </tr>
                   <tr>
-                    <td>90.56</td>
-                    <td>80.70</td>
-                    <td>79.00</td>
+                    <td>Bahasa Indonesia</td>
+                    <td>:</td>
+                    <td><?php echo $_SESSION['b_indonesia']; ?></td>
                   </tr>
                   <tr>
-                    <td>89.90</td>
-                    <td>88.00</td>
-                    <td>82.98</td>
+                    <td>Bahasa Inggris</td>
+                    <td>:</td>
+                    <td><?php echo $_SESSION['b_inggris']; ?></td>
                   </tr>
-                </tbody>
-              </table>
-              <table class="table table-striped table-hover">
-                <thead>
+                  <thead class="mb-2">
+                    <tr>
+                      <td colspan="3" class="h5">Daftar Nilai Kelompok Peminatan</td>
+                    </tr>
+                  </thead>
                   <tr>
-                    <td colspan="3" class="h5">Daftar Nilai Kelompok Peminatan</td>
-                  </tr>
-                  <tr>
-                    <th scope="col">Fisika</th>
-                    <th scope="col">Kimia</th>
-                    <th scope="col">Biologi</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>78.00</td>
-                    <td>79.94</td>
-                    <td>89.00</td>
+                    <td>Fisika</td>
+                    <td>:</td>
+                    <td><?php echo $_SESSION['fisika']; ?></td>
                   </tr>
                   <tr>
-                    <td>80.88</td>
-                    <td>79.00</td>
-                    <td>85.87</td>
+                    <td>Kimia</td>
+                    <td>:</td>
+                    <td><?php echo $_SESSION['kimia']; ?></td>
                   </tr>
                   <tr>
-                    <td>85.00</td>
-                    <td>84.76</td>
-                    <td>85.00</td>
+                    <td>Biologi</td>
+                    <td>:</td>
+                    <td><?php echo $_SESSION['biologi']; ?></td>
                   </tr>
-                </tbody>
-              </table>
-              <table class="table table-striped table-hover">
-                <tbody>
+                  <thead>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </thead>
                   <tr class="h6">
                     <td>Nilai Rata-rata Ujian</td>
                     <td>:</td>
-                    <td><?php echo $_SESSION['nilai_rata_rata']; ?></td>
+                    <td><?php echo $_SESSION['rata_rata']; ?></td>
                   </tr>
                   <tr class="h6">
                     <td>Keterangan</td>
@@ -294,7 +283,7 @@ if (!isset($_SESSION['is_login'])) {
           <div class="text-center mb-5">
             <P class="my-3">Dinyatakan :</p>
             <h2 class="mb-3">LULUS / <del>TIDAK LULUS</del></h2>
-            <p>dengan Nilai Rata-rata : <?php echo $_SESSION['nilai_rata_rata']; ?></p>
+            <p>dengan Nilai Rata-rata : <?php echo $_SESSION['rata_rata']; ?></p>
           </div>
           <p style="text-align: justify">dari satuan pendidikan berdasarkan kriteria kelulusan dan rapat dewan guru SMAN 1 Sumber Marga Telang pada tanggal 29 April 2022 tahun pelajaran 2021/2022.</p>
           <p style="text-align: justify">Demikian Keterangan Pengumuman Kelulusan ini, agar dapat dipergunakan dengan sebagaimana mestinya.</p>
