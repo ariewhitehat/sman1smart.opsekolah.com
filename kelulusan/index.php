@@ -198,7 +198,15 @@ if (!isset($_SESSION['is_login'])) {
           </div> <!-- /end of .col-md-9 -->
           <hr>
           <div class="pt-2 text-center">
-            <a href="../assets/downloads/SKL/<?php echo $_SESSION['download']; ?>" download class="btn btn-primary btn-md"><i class="bi bi-download"></i> Download Surat Keterangan Kelulusan</a>
+            <a href="../assets/downloads/SKL/<?php echo $_SESSION['download']; ?>" class="btn btn-primary btn-md">
+              <i class="bi bi-download"></i> Download Surat Keterangan Kelulusan
+            </a>
+            <a href="../assets/downloads/SKL/<?php echo $_SESSION['download']; ?>" class="btn btn-success btn-md">
+              <i class="bi bi-download"></i> Download Poster Kelulusan
+            </a>
+            <a href="../assets/downloads/SKL/<?php echo $_SESSION['download']; ?>" class="btn btn-danger btn-md">
+              <i class="bi bi-download"></i> Download Kartu Pelajar
+            </a>
           </div>
       </div> <!-- /end of .row -->
     </div> <!-- end of Container -->
