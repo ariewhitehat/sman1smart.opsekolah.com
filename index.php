@@ -99,7 +99,7 @@ if (isset($_POST['login'])) {
     <div class="container">
       <div class="text-center mb-3">
         <img src="assets/img/logo.png" alt="Logo" width="80">
-        <h1 class="h4">Sistem Kelulusan Online</h1>
+        <h1 class="h4">Sistem Informasi Kelulusan Online</h1>
         <h2 class="h5">SMAN 1 Sumber Marga Telang</h2>
       </div>
       <div class="row justify-content-center">
@@ -135,6 +135,58 @@ if (isset($_POST['login'])) {
             <button class="btn btn-success btn-md" type="submit" name="login"><i class="bi bi-search"></i> Cek Kelulusan</button>
             <a href="https://wa.me/6281271734334" target="_blank" class="btn btn-danger"><i class="bi bi-help"></i> <i class="bi bi-info-circle"></i> Butuh Bantuan?</a>
           </form>
+          <!-- Begin of Accordion -->
+          <div class="accordion accordion-flush mt-3" id="accordionFlushExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  <i class="bi bi-book-half px-1"></i> Panduan Peserta Didik
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <ul>
+                    <li>NISN (Nomor Induk Siswa Nasional) : Bisa dilihat pada raport masing-masing siswa</li>
+                    <li>Kode Keamanan : Setiap kelas diberikan kode keamanan khusus oleh Operator Sekolah yang akan dibagikan oleh wali kelas masing-masing</li>
+                    <li>Klik/Tap Tombol Cek Kelulusan, apabila berhasil maka akan diarahkan ke halaman Surat Keterangan Kelulusan</li>
+                    <li>Klik/Tap Tombol Lihat Data Rinci Kelulusan, siswa akan dibawa ke halaman Data Rinci Kelulusan Siswa, scroll ke bawah untuk melihat rincian nilai ijazah siswa per jurusan</li>
+                    <li> Scroll kebawah untuk Download Surat Keterangan Kelulusan, Download Poster Kelulusan (Untuk dishare ke sosial media) dan Download Kartu Pelajar </li>
+                    <li>Apabila terdapat kesulitan dalam penggunaan aplikasi ini Klik/Tap Tombol <a href="https://wa.me/6281271734334" target="_blank" class="btn btn-danger"><i class="bi bi-help"></i> <i class="bi bi-info-circle"></i> Butuh Bantuan?</a>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingTwo">
+                <button class="accordion-button collapsed btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                  <i class="bi bi-info-square-fill px-1"></i> Informasi Umum
+                </button>
+              </h2>
+              <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <p>Aplikasi Pengumuman Kelulusan Online ini baru bisa di akses sesuai intruksi Dinas Pendidikan ProvinsiSumatera Selatan pada tanggal 15 Mei 2022.</p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                  <button class="accordion-button collapsed btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    <i class="bi bi-terminal-fill px-1"></i> Info Aplikasi
+                  </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    <ul>
+                      <li>Aplikasi ini masih dalam tahap pengembangan (Developent) sehingga tidak menutup kemungkinan terjadinya error</li>
+                      <li>Aplikasi ini berada pada <code>Version Beta</code></li>
+                      <li>Aplikasi ini dikembangkan oleh Samsul Bari selaku Operator Sekolah di SMAN 1 Sumber Marga Telang dan Sebagai Frelancer Web Development</li>
+                      <li>Website Pengembang : <a href="https://samsulbari.my.id"> www.samsulbari.my.id</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of Accordion -->
         </div>
       </div>
     </div>

@@ -309,18 +309,17 @@
                 <div class="row justify-content-around mt-4">
                     <div class="col-sm-6">
                         <p>
-                            <i class="bi bi-geo-alt-fill"></i> Alamat :
-                            Jalur 3 Desa Sumber Jaya Kec. Sumber Marga Telang Kab. Banyuasin Prov. Sumatera Selatan - 30977
+                            <i class="bi bi-geo-alt-fill"></i> Jalur 3 Desa Sumber Jaya Kec. Sumber Marga Telang Kab. Banyuasin Prov. Sumatera Selatan - 30977
                         </p>
                         <h4 class="h5 mb-3">Hubungi Kami</h4>
                         <p>
-                            <a href="tel:081367542565" class="btn btn-primary"><i class="bi bi-telephone"></i> Tap untuk menelpon Kepala Sekolah</a>
+                            <a href="tel:081367542565" class="btn btn-primary" target="_blank"><i class="bi bi-telephone"></i> Tap untuk menelpon Kepala Sekolah</a>
                         </p>
                         <p>
-                            <a href="https://wa.me/6281271734334" class="btn btn-success"><i class="bi bi-whatsapp"></i> Tap untuk Chat Operator Sekolah</a>
+                            <a href="https://wa.me/6281271734334" class="btn btn-success" target="_blank"><i class="bi bi-whatsapp"></i> Tap untuk Chat Operator Sekolah</a>
                         </p>
                         <p>
-                            <a href="mailto:info.sman1smt@gmail.com" class="btn btn-danger"><i class="bi bi-envelope"></i> Tap untuk chat via Email Sekolah</a>
+                            <a href="mailto:info.sman1smt@gmail.com" class="btn btn-danger" target="_blank"><i class="bi bi-envelope"></i> Tap untuk chat via Email Sekolah</a>
                         </p>
                     </div>
                 </div>
