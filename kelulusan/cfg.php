@@ -20,7 +20,7 @@ class database
 
 	function login($username, $password, $remember)
 	{
-		$query = mysqli_query($this->connection, "SELECT * FROM `nilai`, `peserta_didik` WHERE `nilai`.`id_pd`= `peserta_didik`.`id_pd`");
+		$query = mysqli_query($this->connection, "SELECT * FROM `peserta_didik`, `nilai` WHERE `peserta_didik`.`id_pd`= `nilai`.`id_pd`");
 		$data_user = $query->fetch_array();
 		if (password_verify($password, $data_user['password'])) {
 			if ($remember) {
