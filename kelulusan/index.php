@@ -1,8 +1,18 @@
 <?php
+// session_start();
+// if (!isset($_SESSION['is_login'])) {
+//   header('location:../');
+// }
+// Initialize the session
 session_start();
-if (!isset($_SESSION['is_login'])) {
-  header('location:../');
+error_reporting(E_ALL);
+
+// Check if the user is logged in, if not then redirect him to login page
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+  header("location: login.php");
+  exit;
 }
+
 ?>
 
 <!doctype html>
@@ -82,7 +92,7 @@ if (!isset($_SESSION['is_login'])) {
         <h1 class="h4 pb-4"><i class="bi bi-card-heading"></i> Data Rinci Kelulusan Peserta Didik TP. 2021/2022</h2>
           <hr>
           <div class="col-md-3">
-            <img class="d-block mb-4 img-thumbnail" src="../assets/img/siswa/MIPA/<?php echo $_SESSION['foto']; ?>">
+            <img class="d-block mb-4 img-thumbnail" src="../assets/img/siswa/MIPA<?php echo htmlspecialchars($_SESSION["foto"]); ?>">
             <a href="logout.php" class="form-inline my-2 my-lg-0 btn btn-danger"><i class="bi bi-box-arrow-right"></i> Logout</a>
           </div>
           <div class="col-md-9">
@@ -94,37 +104,37 @@ if (!isset($_SESSION['is_login'])) {
                   <tr>
                     <td>Nama Peserta</td>
                     <td>:</td>
-                    <td><?php echo $_SESSION['nama_pd']; ?></td>
+                    <td><?php echo htmlspecialchars($_SESSION["nama_pd"]); ?></td>
                   </tr>
                   <tr>
                     <td>Tempat, Tanggal Lahir</td>
                     <td>:</td>
-                    <td><?php echo $_SESSION['ttl']; ?></td>
+                    <td><?php echo htmlspecialchars($_SESSION["ttl"]); ?></td>
                   </tr>
                   <tr>
                     <td>Nama Orang Tua / Wali</td>
                     <td>:</td>
-                    <td><?php echo $_SESSION['nama_ortu']; ?></td>
+                    <td><?php echo htmlspecialchars($_SESSION["nama_ortu"]); ?></td>
                   </tr>
                   <tr>
                     <td>NIS</td>
                     <td>:</td>
-                    <td><?php echo $_SESSION['nis']; ?></td>
+                    <td><?php echo htmlspecialchars($_SESSION["nis"]); ?></td>
                   </tr>
                   <tr>
                     <td>NISN</td>
                     <td>:</td>
-                    <td><?php echo $_SESSION['username']; ?></td>
+                    <td><?php echo htmlspecialchars($_SESSION["username"]); ?></td>
                   </tr>
                   <tr>
                     <td>Jenis Kelamin</td>
                     <td>:</td>
-                    <td><?php echo $_SESSION['jk']; ?></td>
+                    <td><?php echo htmlspecialchars($_SESSION["jk"]); ?></td>
                   </tr>
                   <tr>
                     <td>Kelas / Program</td>
                     <td>:</td>
-                    <td><?php echo $_SESSION['kelas']; ?> / <?php echo $_SESSION['prodi']; ?> (Matematika dan Ilmu Pengetahuan Alam)</td>
+                    <td><?php echo htmlspecialchars($_SESSION["kelas"]); ?> / <?php echo htmlspecialchars($_SESSION["prodi"]); ?> (Matematika dan Ilmu Pengetahuan Alam)</td>
                   </tr>
                   <tr>
                     <td>Tahun Pelajaran</td>
@@ -143,17 +153,17 @@ if (!isset($_SESSION['is_login'])) {
                   <tr>
                     <td>Matematika</td>
                     <td>:</td>
-                    <td><?php echo $_SESSION['matematika']; ?></td>
+                    <td><?php echo htmlspecialchars($_SESSION["n_matematika"]); ?></td>
                   </tr>
                   <tr>
                     <td>Bahasa Indonesia</td>
                     <td>:</td>
-                    <td><?php echo $_SESSION['b_indonesia']; ?></td>
+                    <td><?php echo htmlspecialchars($_SESSION["n_b_indonesia"]); ?></td>
                   </tr>
                   <tr>
                     <td>Bahasa Inggris</td>
                     <td>:</td>
-                    <td><?php echo $_SESSION['b_inggris']; ?></td>
+                    <td><?php echo htmlspecialchars($_SESSION["n_b_inggris"]); ?></td>
                   </tr>
                   <thead class="mb-2">
                     <tr>
@@ -163,17 +173,17 @@ if (!isset($_SESSION['is_login'])) {
                   <tr>
                     <td>Fisika</td>
                     <td>:</td>
-                    <td><?php echo $_SESSION['fisika']; ?></td>
+                    <td><?php echo htmlspecialchars($_SESSION["n_fisika"]); ?></td>
                   </tr>
                   <tr>
                     <td>Kimia</td>
                     <td>:</td>
-                    <td><?php echo $_SESSION['kimia']; ?></td>
+                    <td><?php echo htmlspecialchars($_SESSION["n_kimia"]); ?></td>
                   </tr>
                   <tr>
                     <td>Biologi</td>
                     <td>:</td>
-                    <td><?php echo $_SESSION['biologi']; ?></td>
+                    <td><?php echo htmlspecialchars($_SESSION["n_biologi"]); ?></td>
                   </tr>
                   <thead>
                     <tr>
@@ -185,12 +195,12 @@ if (!isset($_SESSION['is_login'])) {
                   <tr class="h6">
                     <td>Nilai Rata-rata Ujian</td>
                     <td>:</td>
-                    <td><?php echo $_SESSION['rata_rata']; ?></td>
+                    <td><?php echo htmlspecialchars($_SESSION["n_rata_rata"]); ?></td>
                   </tr>
                   <tr class="h6">
                     <td>Keterangan</td>
                     <td>:</td>
-                    <td class="text-success"><?php echo $_SESSION['keterangan']; ?> </td>
+                    <td class="text-success"><?php echo htmlspecialchars($_SESSION["keterangan"]); ?> </td>
                   </tr>
                 </tbody>
               </table>
@@ -291,7 +301,7 @@ if (!isset($_SESSION['is_login'])) {
           <div class="text-center mb-5">
             <P class="my-3">Dinyatakan :</p>
             <h2 class="mb-3">LULUS / <del>TIDAK LULUS</del></h2>
-            <p>dengan Nilai Rata-rata : <?php echo $_SESSION['rata_rata']; ?></p>
+            <p>dengan Nilai Rata-rata : <?php echo htmlspecialchars($_SESSION["n_rata_rata"]); ?></p>
           </div>
           <p style="text-align: justify">dari satuan pendidikan berdasarkan kriteria kelulusan dan rapat dewan guru SMAN 1 Sumber Marga Telang pada tanggal 29 April 2022 tahun pelajaran 2021/2022.</p>
           <p style="text-align: justify">Demikian Keterangan Pengumuman Kelulusan ini, agar dapat dipergunakan dengan sebagaimana mestinya.</p>

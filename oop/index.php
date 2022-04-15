@@ -89,6 +89,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <a class="nav-link" href="#"><i class="bi bi-people"></i> Hai <?php echo htmlspecialchars($_SESSION["username"]); ?></a>
                         </li>
                         <li class="nav-item">
+                            <a href=""><?php echo htmlspecialchars($_SESSION["id"]); ?></a>
                             <a class="nav-link" href="logout.php"><i class="bi bi-box-arrow-right"></i> Logout</a>
                             <a href="reset-password.php" class="btn btn-warning">Reset Password</a>
                         </li>

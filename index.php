@@ -1,31 +1,137 @@
 <?php
+// session_start();
+// include_once('kelulusan/cfg.php');
+
+// $database = new database();
+
+// if (isset($_SESSION['is_login'])) {
+//   header('location:kelulusan/');
+// }
+
+// if (isset($_COOKIE['username'])) {
+//   $database->relogin($_COOKIE['username']);
+//   header('location:kelulusan/');
+// }
+
+// if (isset($_POST['login'])) {
+//   $username = $_POST['username'];
+//   $password = $_POST['password'];
+
+//   if (isset($_POST['remember'])) {
+//     $remember = TRUE;
+//   } else {
+//     $remember = FALSE;
+//   }
+
+//   if ($database->login($username, $password, $remember)) {
+//     header('location:kelulusan/');
+//   }
+// }
+
+// Initialize the session
 session_start();
-include_once('kelulusan/cfg.php');
-
-$database = new database();
-
-if (isset($_SESSION['is_login'])) {
-  header('location:kelulusan/');
+// Check if the user is already logged in, if yes then redirect him to welcome page
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+  header("location: index.php");
+  exit;
 }
 
-if (isset($_COOKIE['username'])) {
-  $database->relogin($_COOKIE['username']);
-  header('location:kelulusan/');
-}
+// Include config file
+require_once "kelulusan/config.php";
 
-if (isset($_POST['login'])) {
-  $username = $_POST['username'];
-  $password = $_POST['password'];
+// Define variables and initialize with empty values
+$username = $password = "";
+$username_err = $password_err = $login_err = "";
 
-  if (isset($_POST['remember'])) {
-    $remember = TRUE;
+// Processing form data when form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+  // Check if username is empty
+  if (empty(trim($_POST["username"]))) {
+    $username_err = "Please enter username.";
   } else {
-    $remember = FALSE;
+    $username = trim($_POST["username"]);
   }
 
-  if ($database->login($username, $password, $remember)) {
-    header('location:kelulusan/');
+  // Check if password is empty
+  if (empty(trim($_POST["password"]))) {
+    $password_err = "Please enter your password.";
+  } else {
+    $password = trim($_POST["password"]);
   }
+
+  // Validate credentials
+  if (empty($username_err) && empty($password_err)) {
+    // Prepare a select statement
+    $sql = "SELECT `id_pd`, `username`, `password`, `nama_pd` FROM peserta_didik WHERE username = ?";
+
+    if ($stmt = $mysqli->prepare($sql)) {
+      // Bind variables to the prepared statement as parameters
+      $stmt->bind_param("s", $param_username);
+      $stmt->bind_param("d", $param_nama_pd);
+
+      // Set parameters
+      $param_username = $username;
+      $param_nama_pd = $nama_pd;
+
+      // Attempt to execute the prepared statement
+      if ($stmt->execute()) {
+        // Store result
+        $stmt->store_result();
+
+        // Check if username exists, if yes then verify password
+        if ($stmt->num_rows == 1) {
+          // Bind result variables
+          $stmt->bind_result($id_pd, $username, $nama_pd, $hashed_password);
+          if ($stmt->fetch()) {
+            if (password_verify($password, $hashed_password)) {
+              // Password is correct, so start a new session
+              session_start();
+
+              // Store data in session variables
+              $_SESSION["loggedin"] = true;
+              //$_SESSION["id_pd"] = $id_pd;
+              $_SESSION["username"] = $username;
+              $_SESSION["nama_pd"] = $nama_pd;
+              // $_SESSION["nis"] = $nis;
+              // $_SESSION["ttl"] = $ttl;
+              // $_SESSION["jk"] = $jk;
+              // $_SESSION["nama_ortu"] = $nama_ortu;
+              // $_SESSION["kelas"] = $kelas;
+              // $_SESSION["prodi"] = $prodi;
+              // $_SESSION["n_matematika"] = $n_matematika;
+              // $_SESSION["n_b_indonesia"] = $n_b_indonesia;
+              // $_SESSION["n_b_inggris"] = $n_b_inggris;
+              // $_SESSION["n_fisika"] = $n_fisika;
+              // $_SESSION["n_kimia"] = $n_kimia;
+              // $_SESSION["n_biologi"] = $n_biologi;
+              // $_SESSION["n_rata_rata"] = $n_rata_rata;
+              // $_SESSION["keterangan"] = $keterangan;
+              // $_SESSION["foto"] = $foto;
+              // $_SESSION["download"] = $download;
+
+              // Redirect user to welcome page
+              header("location: kelulusan/index.php");
+            } else {
+              // Password is not valid, display a generic error message
+              $login_err = "Invalid username or password.";
+            }
+          }
+        } else {
+          // Username doesn't exist, display a generic error message
+          $login_err = "Invalid username or password.";
+        }
+      } else {
+        echo "Oops! Something went wrong. Please try again later.";
+      }
+
+      // Close statement
+      $stmt->close();
+    }
+  }
+
+  // Close connection
+  $mysqli->close();
 }
 ?>
 <!doctype html>
@@ -117,14 +223,16 @@ if (isset($_POST['login'])) {
       </div>
       <div class="row justify-content-center">
         <div class="col-sm-4">
-          <form action="" method="POST" class="needs-validation border border-1 rounded p-4" novalidate>
+          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="needs-validation border border-1 rounded p-4" novalidate>
             <div class="row">
               <div class="col-sm-12 mb-2">
                 <label for="username" class="form-label">Nomor Induk Siswa Nasional (NISN)</label>
                 <div class="input-group has-validation">
                   <span class="input-group-text"><i class="bi bi-credit-card-2-front-fill"></i></span>
-                  <input type="number" name="username" class="form-control" id="username" placeholder="NISN Anda" required>
-                  <div class="invalid-feedback"><i class="bi bi-exclamation-diamond-fill"></i> Maaf, NISN Anda salah !</div>
+                  <input type="number" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" id="username" placeholder="NISN Anda" required>
+                  <div class="invalid-feedback">
+                    <i class="bi bi-exclamation-diamond-fill"></i> <?php echo $username_err; ?>
+                  </div>
                 </div>
               </div>
               <div class="col-sm-12 mb-2">
@@ -138,12 +246,6 @@ if (isset($_POST['login'])) {
                   </div>
                 </div>
               </div>
-              <!-- <div class="my-2"></div> -->
-            </div>
-            <div class="checkbox mb-2">
-              <label>
-                <input type="checkbox" value="remember-me" name="remember"> Ingat saya
-              </label>
             </div>
             <button class="btn btn-primary btn-md" type="submit" name="login"><i class="bi bi-search"></i> Cek Kelulusan</button>
             <a href="https://wa.me/6281271734334" target="_blank" class="btn btn-warning">Butuh Bantuan?</a>
